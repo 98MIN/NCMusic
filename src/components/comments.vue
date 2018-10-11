@@ -54,7 +54,9 @@
                     <p>评论<small>共{{commentsCount.total}}条评论</small></p>
                     <div class="commentsBox clearfix">
                         <img src="../images/default_avatar.jpg" width="50px" alt="">
-                        <div class="commentsContent"></div>
+                        <div class="commentsContent">
+                            <textArea style="resize:none;width:100%;height:100%" placeholder="快来发表评论呀..."></textArea>
+                        </div>
                         <div class="btn">
                             <a href="#">评论</a>
                         </div>
@@ -116,6 +118,7 @@ import vHncomments from './hot and new comments';
     export default{
         data(){
             return{
+                tipMsg:"快来发表评论呀...",
                 musicId:'',
                 musicContent:[],
                 musicUrl:'',
@@ -416,6 +419,15 @@ import vHncomments from './hot and new comments';
         height: 62px;
         border: 1px solid #666;
         display: inline-block;
+        font-size : 14px;
+        color : #999;
+    }
+    .commentsBox .commentsContent textArea{
+        outline : 0;
+        border : 0 ;
+        padding : 5px;
+        display: inline-block;
+        box-sizing:border-box;
     }
     .commentsBox .commentsContent::before,.commentsBox .commentsContent::after{
         display: block;
