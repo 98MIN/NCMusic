@@ -417,14 +417,19 @@ import vHncomments from './hot and new comments';
         border: 1px solid #666;
         display: inline-block;
     }
-    .commentsBox .commentsContent::before{
+    .commentsBox .commentsContent::before,.commentsBox .commentsContent::after{
         display: block;
         content: '';
         border: 8px solid transparent;
-        border-right: 8px solid #fff;
+        border-right: 8px solid #666;
         position: absolute;
         left: -16px;
         top: 10px;
+    }
+    .commentsBox .commentsContent::before{
+        border-right: 8px solid #fff;
+        left:-14px;
+        z-index:3;
     }
     .commentsBox .btn{
         height: 20px;
