@@ -55,7 +55,7 @@
                     <div class="commentsBox clearfix">
                         <img src="../images/default_avatar.jpg" width="50px" alt="">
                         <div class="commentsContent">
-                            <textArea style="resize:none;width:100%;height:100%" placeholder="快来发表评论呀..."></textArea>
+                            <textArea style="resize:none;width:100%;height:100%" placeholder="快来发表评论呀..." @focus="comment"></textArea>
                         </div>
                         <div class="btn">
                             <a href="#">评论</a>
@@ -233,6 +233,14 @@ import vHncomments from './hot and new comments';
                 this.getLyric(this.musicId);
                 this.getSameSongs(this.musicId);
                 this.getSameSongLists(this.musicId); 
+            },
+            /*评论框获取焦点*/ 
+            comment(){
+                if(this.$store.state.isLogin==1){
+                    console.log("请继续")
+                }else{
+                    this.$store.commit("tipsShow");
+                }
             }
         },
        mounted () {
