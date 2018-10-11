@@ -55,9 +55,9 @@
                     <div class="commentsBox clearfix">
                         <img src="../images/default_avatar.jpg" width="50px" alt="">
                         <div class="commentsContent">
-                            <textArea style="resize:none;width:100%;height:100%" placeholder="快来发表评论呀..." @focus="comment"></textArea>
+                            <textArea style="resize:none;width:100%;height:100%"   @focus="commentFocus($event)" v-model="contents"></textArea>
                         </div>
-                        <div class="btn">
+                        <div class="btn" @click.prevent="submitComment">
                             <a href="#">评论</a>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ import vHncomments from './hot and new comments';
     export default{
         data(){
             return{
-                tipMsg:"快来发表评论呀...",
+                contents:"2133123131312323123123",
                 musicId:'',
                 musicContent:[],
                 musicUrl:'',
@@ -131,19 +131,11 @@ import vHncomments from './hot and new comments';
                 liked:""
             }
         },
-        // watch: {
-        //     liked(){
-        //         this.getComments(this.musicId);
-        //         console.log(312);
-        //     }
-        // }
-        // ,
         watch: {
             musicId(){
                 this.$router.push("/comments?id="+this.musicId)
             }
-        }
-        ,
+        },
         methods: {
             getData(id){
                 this.$axios.get('http://118.24.90.238:3000/song/detail?ids='+id).then((res)=>{
@@ -235,13 +227,29 @@ import vHncomments from './hot and new comments';
                 this.getSameSongLists(this.musicId); 
             },
             /*评论框获取焦点*/ 
-            comment(){
-                if(this.$store.state.isLogin==1){
-                    console.log("请继续")
-                }else{
+            commentFocus(e){
+                if(this.$store.state.isLogin!=1){  
                     this.$store.commit("tipsShow");
+                    /*弹出提示框后让输入框失去焦点*/ 
+                    e.target.blur();
+                }else{
+                    this.disabled = false;
                 }
-            }
+            },
+            /*提交评论*/
+            submitComment(){
+                console.log(this.commentsContents);
+                
+                // if(this.$store.state.isLogin==1){
+                //     this.$axios.get("http://118.24.90.238:3000/comment?action=1&type=0&id="+this.musicId+"&content="+this.commentsContents).then((res)=>{
+                //         console.log(res.data);
+                //     }).catch((error)=>{
+                //         console.log(error);
+                //     })
+                // }else{
+                //      return;
+                // }
+            } 
         },
        mounted () {
            this.musicId = this.$route.query.id;
