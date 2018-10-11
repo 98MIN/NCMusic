@@ -12,7 +12,7 @@
                     <span>{{item.beReplied[0].user.nickname}}</span>
                     <span>:</span>
                     <span>{{item.beReplied[0].content}}</span>
-                    <span class="arrow"></span>
+                    <!-- <span class="arrow"></span> -->
                 </div>
             </div>
             <div class="date">
@@ -150,12 +150,18 @@
         position: relative;
         color: #666;
     }
-    .arrow{
-        position: absolute;
+    .beReplied:after,.beReplied:before{
+        display:block;
+        content:"";
+         position: absolute;
         border: 5px solid transparent;
-        border-bottom: 5px solid #f4f4f4;
-        left: 15px;
-        top: -10px;
+        border-right: 5px solid rgb(222, 222, 222);
+        left: -11px;
+        top: 10px;
+    }
+    .beReplied:after{
+         border-right: 5px solid #f4f4f4;
+         left:-10px;
     }
 </style>
 
