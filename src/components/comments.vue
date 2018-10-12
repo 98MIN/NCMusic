@@ -55,10 +55,10 @@
                     <div class="commentsBox clearfix">
                         <img src="../images/default_avatar.jpg" width="50px" alt="">
                         <div class="commentsContent">
-                            <textArea style="resize:none;width:100%;height:100%"   @focus="commentFocus($event)" :value="contents" @input="commentValue($event)" placeholder="快来加入评论大军呀..."></textArea>
+                            <textarea style="resize:none;width:100%;height:100%"   @focus="commentFocus($event)" :value="contents" @input="commentValue($event)" placeholder="快来加入评论大军呀..."></textarea>
                         </div>
-                        <div class="btn" @click.prevent="submitComment">
-                            <a href="#">评论</a>
+                        <div class="btn">
+                            <a href="#" @click.prevent="submitComment">评论</a>
                         </div>
                     </div>
                     <div class="commentslist clearfix">
@@ -243,7 +243,12 @@ import vHncomments from './hot and new comments';
             submitComment(){
                 if(this.$store.state.isLogin==1){
                     this.$axios.get("http://118.24.90.238:3000/comment?action=1&type=0&id="+this.musicId+"&content="+this.contents).then((res)=>{
-                        console.log(res.data);
+                        if(res.data.code==200){
+                            alert("评论成功");
+                                this.contents = '';
+                        }else{
+                            alert(res.data.msg)
+                        }
                     }).catch((error)=>{
                         console.log(error);
                     })
