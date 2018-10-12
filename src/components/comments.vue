@@ -55,7 +55,7 @@
                     <div class="commentsBox clearfix">
                         <img src="../images/default_avatar.jpg" width="50px" alt="">
                         <div class="commentsContent">
-                            <textArea style="resize:none;width:100%;height:100%"   @focus="commentFocus($event)" v-model="contents"></textArea>
+                            <textArea style="resize:none;width:100%;height:100%"   @focus="commentFocus($event)" :value="contents" @input="commentValue($event)" placeholder="快来加入评论大军呀..."></textArea>
                         </div>
                         <div class="btn" @click.prevent="submitComment">
                             <a href="#">评论</a>
@@ -118,7 +118,7 @@ import vHncomments from './hot and new comments';
     export default{
         data(){
             return{
-                contents:"2133123131312323123123",
+                contents:"",
                 musicId:'',
                 musicContent:[],
                 musicUrl:'',
@@ -236,19 +236,20 @@ import vHncomments from './hot and new comments';
                     this.disabled = false;
                 }
             },
+            commentValue(e){
+                this.contents = e.target.value;
+            },
             /*提交评论*/
             submitComment(){
-                console.log(this.commentsContents);
-                
-                // if(this.$store.state.isLogin==1){
-                //     this.$axios.get("http://118.24.90.238:3000/comment?action=1&type=0&id="+this.musicId+"&content="+this.commentsContents).then((res)=>{
-                //         console.log(res.data);
-                //     }).catch((error)=>{
-                //         console.log(error);
-                //     })
-                // }else{
-                //      return;
-                // }
+                if(this.$store.state.isLogin==1){
+                    this.$axios.get("http://118.24.90.238:3000/comment?action=1&type=0&id="+this.musicId+"&content="+this.contents).then((res)=>{
+                        console.log(res.data);
+                    }).catch((error)=>{
+                        console.log(error);
+                    })
+                }else{
+                     return;
+                }
             } 
         },
        mounted () {
