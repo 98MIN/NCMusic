@@ -12,7 +12,6 @@
                     <span>{{item.beReplied[0].user.nickname}}</span>
                     <span>:</span>
                     <span>{{item.beReplied[0].content}}</span>
-                    <!-- <span class="arrow"></span> -->
                 </div>
             </div>
             <div class="date">
@@ -25,7 +24,6 @@
                 <a href="#">回复</a>
             </div>
         </div>
-        
     </div>
 </template>
 <script>
