@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <v-header></v-header>
-    <v-nav></v-nav>
-    <router-view></router-view>
-    <v-footer></v-footer>
-    <v-totop></v-totop>
-    <v-tips></v-tips>
-    <v-audio></v-audio>
+    <div id="apps">
+      <v-mask v-if="this.$store.state.maskshow"></v-mask>
+      <v-header></v-header>
+      <v-nav></v-nav>
+      <router-view></router-view>
+      <v-footer></v-footer>
+      <v-totop></v-totop>
+      <v-tips></v-tips>
+      <v-audio></v-audio>
+    </div>
   </div>
 </template>
 <script>
@@ -17,6 +20,7 @@ import vHome from "./components/home";
 import vTotop from "./components/vTotop";
 import vTips from "./components/tips.vue";
 import vAudio from "./components/audio.vue";
+import vMask from "./components/mask.vue";
 export default {
   name: 'App',
   components:{
@@ -26,10 +30,13 @@ export default {
     vHome,
     vTotop,
     vTips,
-    vAudio
+    vAudio,
+    vMask
   },
   methods: {
-   
+   maskHide(){
+
+   }
   },mounted() {
             
         

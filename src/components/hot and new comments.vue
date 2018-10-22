@@ -44,6 +44,8 @@
             },
             like(event){
                 if(this.$store.state.isLogin!=1){
+                    this.$store.commit('maskShow');
+                    document.body.style.overflow = "hidden"; 
                     this.$store.commit("tipsShow");
                 }else{
                      var cid = event.target.parentElement.getAttribute("cid");

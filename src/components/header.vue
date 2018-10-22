@@ -128,7 +128,9 @@ import vHotsearch from "./hotSearch";
             },
             telLogin(){
                 this.loginType = "手机号登录";
-                this.$store.commit('open')
+                this.$store.commit('open');
+                this.$store.commit('maskShow');
+                document.body.style.overflow = "hidden";
             },
             emailLogin(){
                 this.loginType = "网易邮箱登录";

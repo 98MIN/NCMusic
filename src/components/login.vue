@@ -49,6 +49,8 @@
                         this.$emit("codeP",this.loginRes.data); 
                         // 登录成功关闭登录面板
                         this.close(); 
+                        this.$store.commit('maskHide');
+                        document.body.style.overflow = "auto";  
                     }else{
                         this.tip = '用户名或密码错误';
                         setTimeout(()=>{
@@ -63,7 +65,9 @@
             // 关闭登录面板
             close(){
                 // 改变vuex中登陆面板的状态
-                this.$store.commit('close')          
+                this.$store.commit('close');
+                 this.$store.commit('maskHide');
+                 document.body.style.overflow = "auto";       
             }
         }
     }

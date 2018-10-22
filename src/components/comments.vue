@@ -228,7 +228,9 @@ import vHncomments from './hot and new comments';
             },
             /*评论框获取焦点*/ 
             commentFocus(e){
-                if(this.$store.state.isLogin!=1){  
+                if(this.$store.state.isLogin!=1){ 
+                     this.$store.commit('maskShow');
+                    document.body.style.overflow = "hidden";  
                     this.$store.commit("tipsShow");
                     /*弹出提示框后让输入框失去焦点*/ 
                     e.target.blur();

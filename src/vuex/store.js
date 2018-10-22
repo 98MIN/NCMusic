@@ -14,7 +14,8 @@ var state = {
     /*tips显示隐藏*/ 
     isShow:false,
     /*用户id*/
-    userId:'' 
+    userId:'' ,
+    maskshow:false
 }
 
 /*2.mutations里面放方法,方法主要改变state里面的方法*/ 
@@ -73,6 +74,12 @@ var mutations = {
     },
     setUid(){
         state.userId = '';
+    },
+    maskShow(){
+        state.maskshow = true;
+    },
+    maskHide(){
+        state.maskshow = false;
     }  
 }
 

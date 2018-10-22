@@ -16,6 +16,8 @@
             },
             methods: {
                 close(){
+                    this.$store.commit('maskHide');
+                    document.body.style.overflow = "auto"; 
                    this.$store.commit("tipsHide");
                 },
                 Center(){
